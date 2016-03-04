@@ -2,7 +2,7 @@
 
 	class Store
 	{
-        private $id;
+		private $id;
 		private $name;
 
 		function __construct($id, $name)
@@ -29,6 +29,7 @@
 		static function getAll()
 		{
 			$query = $GLOBALS['DB']->query("SELECT * FROM shoe_stores;");
+
 			$stores = array();
 			foreach($query as $store) {
 				$id = $store['id'];
@@ -57,7 +58,14 @@
 				WHERE shoe_stores.id = {$this->getId()};");
 			$brand_ids = $query->fetchAll(PDO::FETCH_ASSOC);
 
-			$brands = array();foreach($brand_ids as $brand) {$id = $brand['id'];$name = $brand['name'];$new_brand = new Brand($id, $name);array_push($brands, $new_brand);}return $brands;
+			$brands = array();
+			foreach($brand_ids as $brand) {
+				$id = $brand['id'];
+				$name = $brand['name'];
+				$new_brand = new Brand($id, $name);
+				array_push($brands, $new_brand);
+			}
+			return $brands;
 		}
 
 		static function findByStore($search_name)
