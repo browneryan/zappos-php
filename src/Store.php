@@ -82,7 +82,7 @@
 					$found_store = $store;}
 				}
 				return $found_store;
-			}
+		}
 
 		function deleteStore()
 		{
