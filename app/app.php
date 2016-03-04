@@ -66,14 +66,14 @@
 		$store->update($_POST['name']);
 		return $app['twig']->render('store.html.twig', array('shoe_stores' => $store, 'brands' => $store->getBrands()
 	  ));
-    });
+	});
 
 	$app->delete("/store/{id}/delete", function($id) use ($app) {
 		$store = Store::find($id);
 		$store->deleteStore();
 		return $app['twig']->render('shoe_stores.html.twig', array('shoe_stores' => Store::getAll()
 	  ));
-    });
+	});
 
 	return $app;
 ?>
