@@ -26,7 +26,8 @@
 
 	// Gets shoe_store homepage with list of shoe shoe_stores
 	$app->get('/shoe_stores', function() use ($app) {
-		return $app['twig']->render('shoe_stores.html.twig');
+		return $app['twig']->render('shoe_stores.html.twig', array('shoe_stores' => Store::getAll()
+	  ));
 	});
 
 	// Add store to shoe_stores page
