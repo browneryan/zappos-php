@@ -178,23 +178,25 @@
             $this->assertEquals([$test_store, $test_store2], $test_brand->getStores());
         }
 
-		// function testDeleteBrand()
-		// {
-		// 	//Arrange
-		// 	$name = "A Visit from the Goon Squad";
-		// 	$id = 1;
-		// 	$test_brand = new Brand($name, $id);
-		// 	$test_brand->save();
-		// 	$name = "Jennifer Egan";
-		// 	$id = 2;
-		// 	$test_store = new Store($name, $id);
-		// 	$test_store->save();
-		// 	//Act
-		// 	$test_brand->addStore($test_store);
-		// 	$test_brand->deleteBrand();
-		// 	//Assert
-		// 	$this->assertEquals([], $test_store->getBrands());
-		// }
+		function testDeleteBrand()
+		{
+			//Arrange
+			$name = "Vivobarefoot";
+			$test_brand = new Brand($id = null, $name);
+            $test_brand->save();
+
+			$store_name = "Pie Footwear";
+            $test_store = new Store($id = null, $store_name);
+            $test_store->save();
+
+			//Act
+			$test_brand->addStore($test_store);
+			$test_brand->deleteBrand();
+
+			//Assert
+			$this->assertEquals([], $test_store->getBrands());
+		}
+
 		// function testAddCopy()
 		// {
 		// 	//Arrange
