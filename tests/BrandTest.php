@@ -14,7 +14,7 @@
 	class BrandTest extends PHPUnit_Framework_TestCase
 	{
 		protected function tearDown()
-        {
+		{
 			Brand::deleteAll();
 			Store::deleteAll();
 		}
@@ -197,6 +197,6 @@
 			//Assert
 			$this->assertEquals([], $test_store->getBrands());
 		}
-		
+
 	}
 ?>
