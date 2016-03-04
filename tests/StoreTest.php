@@ -34,7 +34,7 @@
             //Assert
             $this->assertEquals($store_name, $result);
         }
-        
+
 		function testGetId()
         {
             //Arrange
@@ -99,43 +99,47 @@
 			$this->assertEquals([], $result);
 		}
 
-		// function testAddBrand()
-		// {
-		// 	//Arrange
-		// 	$title = "The General in his Labyrinth";
-		// 	$id = 1;
-		// 	$test_book = new Brand($title, $id);
-        //     $test_book->save();
-		// 	$name = "Gabriel Garcia Marquez";
-        //     $id = 1;
-        //     $test_store = new Store($name, $id);
-		// 	$test_store->save();
-		// 	//Act
-		// 	$test_store->addBrand($test_book);
-		// 	//Assert
-		// 	$this->assertEquals($test_store->getBrands(), [$test_book]);
-		// }
-		// function testGetBrands()
-        // {
-        //     //Arrange
-		// 	$name = "Gabriel Garcia Marquez";
-        //     $id = 1;
-        //     $test_store = new Store($name, $id);
-		// 	$test_store->save();
-		// 	$title = "The General in his Labyrinth";
-		// 	$id = 1;
-		// 	$test_book = new Brand($title, $id);
-        //     $test_book->save();
-		// 	$title2 = "No One Writes to the Colonel";
-		// 	$id2 = 2;
-		// 	$test_book2 = new Brand($title2, $id2);
-        //     $test_book2->save();
-        //     //Act
-        //     $test_store->addBrand($test_book);
-        //     $test_store->addBrand($test_book2);
-        //     //Assert
-        //     $this->assertEquals($test_store->getBrands(), [$test_book, $test_book2]);
-        // }
+		function testAddBrand()
+		{
+			//Arrange
+			$name = "Vivobarefoot";
+			$test_brand = new Brand($id = null, $name);
+			$test_brand->save();
+
+			$store_name = "Pie Footwear";
+            $test_store = new Store($id = null, $store_name);
+			$test_store->save();
+
+			//Act
+			$test_store->addBrand($test_brand);
+
+			//Assert
+			$this->assertEquals([$test_brand], $test_store->getBrands());
+		}
+
+		function testGetBrands()
+        {
+            //Arrange
+			$store_name = "Pie Footwear";
+            $test_store = new Store($id = null, $store_name);
+			$test_store->save();
+
+			$name = "Vivobarefoot";
+			$test_brand = new Brand($id = null, $name);
+            $test_brand->save();
+
+            $name2 = "Toms";
+			$test_brand2 = new Brand($id2 = null, $name2);
+            $test_brand2->save();
+
+            //Act
+            $test_store->addBrand($test_brand);
+            $test_store->addBrand($test_brand2);
+
+            //Assert
+            $this->assertEquals([$test_brand, $test_brand2], $test_store->getBrands());
+        }
+
 		// function testFindByStore()
         // {
         //     //Arrange
@@ -145,8 +149,8 @@
 		// 	$test_store->save();
 		// 	$title = "The General in his Labyrinth";
 		// 	$id = 1;
-		// 	$test_book = new Brand($title, $id);
-        //     $test_book->save();
+		// 	$test_brand = new Brand($title, $id);
+        //     $test_brand->save();
         //     //Act
         //     $result = Store::findByStore($test_store->getName());
         //     //Assert
