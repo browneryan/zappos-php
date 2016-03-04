@@ -128,43 +128,52 @@
             $this->assertEquals($test_brand, $result);
         }
 
-		// function testAddAuthor()
-		// {
-		// 	//Arrange
-		// 	$name = "Slaughterhouse Five";
-		// 	$id = 1;
-		// 	$test_brand = new Brand($name, $id);
-        //     $test_brand->save();
-		// 	$name = "Kurt Vonnegut";
-        //     $id = 1;
-        //     $test_author = new Author($name, $id);
-		// 	$test_author->save();
-		// 	//Act
-		// 	$test_brand->addAuthor($test_author);
-		// 	//Assert
-		// 	$this->assertEquals([$test_author], $test_brand->getAuthors());
-		// }
-		// function testGetAuthors()
-        // {
-        //     //Arrange
-		// 	$name = "Gardners Art Through the Ages";
-		// 	$id = 1;
-		// 	$test_brand = new Brand($name, $id);
-        //     $test_brand->save();
-        //     $name = "Richard Tansev";
-        //     $id = 1;
-        //     $test_author = new Author($name, $id);
-        //     $test_author->save();
-        //     $name2 = "Horst De La Croix";
-        //     $id2 = 2;
-        //     $test_author2 = new Author($name2, $id2);
-        //     $test_author2->save();
-        //     //Act
-        //     $test_brand->addAuthor($test_author);
-        //     $test_brand->addAuthor($test_author2);
-        //     //Assert
-        //     $this->assertEquals([$test_author, $test_author2], $test_brand->getAuthors());
-        // }
+		function testAddStore()
+		{
+			//Arrange
+			$store_name = "Pie Footwear";
+            $test_store = new Store($id = null, $store_name);
+            $test_store->save();
+
+            $name = "Vivobarefoot";
+			$test_brand = new Brand($id = null, $name);
+            $test_brand->save();
+
+            $name2 = "Toms";
+			$test_brand2 = new Brand($id2 = null, $name2);
+            $test_brand2->save();
+
+			//Act
+			$test_brand->addStore($test_store);
+			//Assert
+
+			$this->assertEquals([$test_store], $test_brand->getStores());
+		}
+
+		function testGetStores()
+        {
+            //Arrange
+            $name = "Vivobarefoot";
+			$test_brand = new Brand($id = null, $name);
+            $test_brand->save();
+
+			$store_name = "Pie Footwear";
+            $test_store = new Store($id = null, $store_name);
+            $test_store->save();
+
+			$store_name2 = "The Shoe Store PDX";
+            $test_store2 = new Store($id2 = null, $store_name2);
+			$test_store2->save();
+
+
+            //Act
+            $test_brand->addStore($test_store);
+            $test_brand->addStore($test_store2);
+
+            //Assert
+            $this->assertEquals([$test_store, $test_store2], $test_brand->getStores());
+        }
+
 		// function testDeleteBrand()
 		// {
 		// 	//Arrange
@@ -174,13 +183,13 @@
 		// 	$test_brand->save();
 		// 	$name = "Jennifer Egan";
 		// 	$id = 2;
-		// 	$test_author = new Author($name, $id);
-		// 	$test_author->save();
+		// 	$test_store = new Store($name, $id);
+		// 	$test_store->save();
 		// 	//Act
-		// 	$test_brand->addAuthor($test_author);
+		// 	$test_brand->addStore($test_store);
 		// 	$test_brand->deleteBrand();
 		// 	//Assert
-		// 	$this->assertEquals([], $test_author->getBrands());
+		// 	$this->assertEquals([], $test_store->getBrands());
 		// }
 		// function testAddCopy()
 		// {

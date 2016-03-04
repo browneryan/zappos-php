@@ -68,31 +68,35 @@
 			}
 			return $found_brand;
 		}
-        
-		// function addAuthor($author)
-		// {
-		// 	$GLOBALS['DB']->exec("INSERT INTO brands_authors (brand_id, author_id) VALUES ({$this->getId()}, {$author->getId()});");
-		// }
-		// function getAuthors()
-		// {
-		// 	$query = $GLOBALS['DB']->query("SELECT authors.* FROM brands
-		// 		JOIN brands_authors ON (brands.id = brands_authors.brand_id)
-		// 		JOIN authors ON (brands_authors.author_id = authors.id)
-		// 		WHERE brands.id = {$this->getId()};");
-		// 	$authors = $query->fetchAll(PDO::FETCH_ASSOC);
-		// 	$authors_result = array();
-		// 	foreach($authors as $author) {
-		// 		$name = $author['name'];
-		// 		$id = $author['id'];
-		// 		$new_author = new Author($name, $id);
-		// 		array_push($authors_result, $new_author);
-		// 	}
-		// 	return $authors_result;
-		// }
+
+		function addStore($store)
+		{
+			$GLOBALS['DB']->exec("INSERT INTO stores_brands (brand_id, store_id) VALUES ({$this->getId()}, {$store->getId()});");
+		}
+
+		function getStores()
+		{
+			$query = $GLOBALS['DB']->query("SELECT shoe_stores.* FROM brands
+				JOIN stores_brands ON (brands.id = stores_brands.brand_id)
+				JOIN shoe_stores ON (stores_brands.store_id = shoe_stores.id)
+				WHERE brands.id = {$this->getId()};");
+
+				$stores = $query->fetchAll(PDO::FETCH_ASSOC);
+
+			$stores_result = array();
+			foreach($stores as $store) {
+				$id = $store['id'];
+				$name = $store['name'];
+				$new_store = new Store($id, $name);
+				array_push($stores_result, $new_store);
+			}
+			return $stores_result;
+		}
+
 		// function deleteBrand()
 		// {
 		// 	$GLOBALS['DB']->exec("DELETE FROM brands WHERE id = {$this->getId()};");
-		// 	$GLOBALS['DB']->exec("DELETE FROM brands_authors WHERE brand_id = {$this->getId()};");
+		// 	$GLOBALS['DB']->exec("DELETE FROM stores_brands WHERE brand_id = {$this->getId()};");
 		// }
 		// function addCopy($brand)
 		// {
