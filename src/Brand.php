@@ -1,7 +1,7 @@
 <?php
 	 class Brand
 	{
-        private $id;
+		private $id;
 		private $name;
 
 		function __construct($id = null, $name)
@@ -32,7 +32,7 @@
 			$query = $GLOBALS['DB']->query("SELECT * FROM brands;");
 			$brands = array();
 			foreach($query as $brand) {
-                $id = $brand['id'];
+				$id = $brand['id'];
 				$name = $brand['name'];
 				$new_brand = new Brand($id, $name);
 				array_push($brands, $new_brand);
