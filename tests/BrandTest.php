@@ -16,7 +16,7 @@
 		protected function tearDown()
         {
           Brand::deleteAll();
-		//   Store::deleteAll();
+		  Store::deleteAll();
         }
 
 		function testGetName()
@@ -31,6 +31,7 @@
 			//Assert
 			$this->assertEquals($name, $result);
 		}
+
 		function testGetId()
 		{
 			//Arrange
