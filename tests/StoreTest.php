@@ -15,11 +15,13 @@
 
 	class StoreTest extends PHPUnit_Framework_TestCase
 	{
-		// protected function tearDown()
-        // {
-        //     Store::deleteAll();
-        //     Brand::deleteAll();
-        // }
+
+		protected function tearDown()
+        {
+            Store::deleteAll();
+            Brand::deleteAll();
+        }
+
 		function testGetName()
         {
             //Arrange
@@ -32,6 +34,7 @@
             //Assert
             $this->assertEquals($store_name, $result);
         }
+        
 		function testGetId()
         {
             //Arrange
@@ -45,34 +48,57 @@
 			$this->assertEquals(1, $result);
 		}
 
-		// function testSave()
-		// {
-		// 	//Arrange
-		// 	$name = "Junot Diaz";
-        //     $id = 1;
-        //     $test_store = new Store($name, $id);
-		// 	//Act
-		// 	$test_store->save();
-		// 	//Assert
-		// 	$result = Store::getAll();
-		// 	$this->assertEquals($test_store, $result[0]);
-		// }
-		// function testGetAll()
-		// {
-		// 	//Arrange
-		// 	$name = "Junot Diaz";
-        //     $id = 1;
-        //     $test_store = new Store($name, $id);
-		// 	$test_store->save();
-		// 	$name2 = "Gabriel Garcia Marquez";
-		// 	$id2 = 2;
-		// 	$test_store2 = new Store($name2, $id2);
-		// 	$test_store2->save();
-		// 	//Act
-		// 	$result = Store::getAll();
-		// 	//Assert
-		// 	$this->assertEquals([$test_store, $test_store2], $result);
-		// }
+		function testSave()
+		{
+			//Arrange
+            $store_name = "Pie Footwear";
+            $test_store = new Store($id = null, $store_name);
+
+			//Act
+			$test_store->save();
+
+			//Assert
+			$result = Store::getAll();
+			$this->assertEquals($test_store, $result[0]);
+		}
+
+		function testGetAll()
+		{
+			//Arrange
+            $store_name = "Pie Footwear";
+            $test_store = new Store($id = null, $store_name);
+			$test_store->save();
+
+            $store_name2 = "The Shoe Store PDX";
+            $test_store2 = new Store($id2 = null, $store_name2);
+			$test_store2->save();
+
+			//Act
+			$result = Store::getAll();
+
+			//Assert
+			$this->assertEquals([$test_store, $test_store2], $result);
+		}
+
+        function testDeleteAll()
+		{
+			//Arrange
+            $store_name = "Pie Footwear";
+            $test_store = new Store($id = null, $store_name);
+			$test_store->save();
+
+            $store_name2 = "The Shoe Store PDX";
+            $test_store2 = new Store($id2 = null, $store_name2);
+			$test_store2->save();
+
+			//Act
+			Store::deleteAll();
+			$result = Store::getAll();
+
+			//Assert
+			$this->assertEquals([], $result);
+		}
+
 		// function testAddBrand()
 		// {
 		// 	//Arrange
@@ -126,22 +152,6 @@
         //     //Assert
         //     $this->assertEquals($test_store, $result);
         // }
-		// function testDeleteAll()
-		// {
-		// 	//Arrange
-		// 	$name = "Junot Diaz";
-        //     $id = 1;
-        //     $test_store = new Store($name, $id);
-		// 	$test_store->save();
-		// 	$name2 = "Gabriel Garcia Marquez";
-		// 	$id2 = 2;
-		// 	$test_store2 = new Store($name2, $id2);
-		// 	$test_store2->save();
-		// 	//Act
-		// 	Store::deleteAll();
-		// 	$result = Store::getAll();
-		// 	//Assert
-		// 	$this->assertEquals([], $result);
-		// }
+
 	}
 ?>

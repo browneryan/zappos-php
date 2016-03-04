@@ -20,28 +20,31 @@
         {
             return $this->name;
         }
-        
-		// function save()
-		// {
-		// 	$GLOBALS['DB']->exec("INSERT INTO authors (name) VALUES ('{$this->getName()}');");
-		// 	$this->id = $GLOBALS['DB']->lastInsertId();
-		// }
-		// static function getAll()
-		// {
-		// 	$query = $GLOBALS['DB']->query("SELECT * FROM authors;");
-		// 	$authors = array();
-		// 	foreach($query as $author) {
-		// 		$name = $author['name'];
-		// 		$id = $author['id'];
-		// 		$new_author = new Store($name, $id);
-		// 		array_push($authors, $new_author);
-		// 	}
-		// 	return $authors;
-		// }
-		// static function deleteAll()
-		// {
-		// 	$GLOBALS['DB']->exec("DELETE FROM authors;");
-		// }
+
+		function save()
+		{
+			$GLOBALS['DB']->exec("INSERT INTO shoe_stores (name) VALUES ('{$this->getName()}');");
+			$this->id = $GLOBALS['DB']->lastInsertId();
+		}
+
+		static function getAll()
+		{
+			$query = $GLOBALS['DB']->query("SELECT * FROM shoe_stores;");
+			$stores = array();
+			foreach($query as $store) {
+                $id = $store['id'];
+				$name = $store['name'];
+				$new_store = new Store($id, $name);
+				array_push($stores, $new_store);
+			}
+			return $stores;
+		}
+
+		static function deleteAll()
+		{
+			$GLOBALS['DB']->exec("DELETE FROM shoe_stores;");
+		}
+
 		// function addBook($book)
 		// {
 		// 	$GLOBALS['DB']->exec("INSERT INTO books_authors (book_id, author_id) VALUES ({$book->getId()}, {$this->getId()});");
