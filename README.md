@@ -5,7 +5,7 @@
 
 ## Description
 
-Lists local shoe stores and the brands of shoes they carry in a database, which a user can modify by adding more brands.
+Lists local shoe stores and the brands of shoes they carry in a database, which a user can modify by adding more brands to a store.
 
 ## Setup
 
