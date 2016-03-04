@@ -99,6 +99,24 @@
 			$this->assertEquals([], $result);
 		}
 
+		function testFind()
+		{
+			//Arrange
+			$store_name = "Pie Footwear";
+			$test_store = new Store($id = null, $store_name);
+			$test_store->save();
+
+			$store_name2 = "The Shoe Store PDX";
+			$test_store2 = new Store($id2 = null, $store_name2);
+			$test_store2->save();
+
+			//Act
+			$result = Store::find($test_store->getId());
+
+			//Assert
+			$this->assertEquals($test_store, $result);
+		}
+
 		function testAddBrand()
 		{
 			//Arrange
