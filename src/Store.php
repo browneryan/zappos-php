@@ -32,7 +32,7 @@
 			$query = $GLOBALS['DB']->query("SELECT * FROM shoe_stores;");
 			$stores = array();
 			foreach($query as $store) {
-                $id = $store['id'];
+				$id = $store['id'];
 				$name = $store['name'];
 				$new_store = new Store($id, $name);
 				array_push($stores, $new_store);
