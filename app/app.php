@@ -53,5 +53,12 @@
 	  ));
 	});
 
+	// Delete all stores
+	$app->post('/delete_all_stores', function() use ($app) {
+		Store::deleteAll();
+		return $app['twig']->render('shoe_stores.html.twig', array('shoe_stores' => Store::getAll()
+	  ));
+	});
+
 	return $app;
 ?>
