@@ -6,9 +6,8 @@
 
 		function __construct($id = null, $name)
 		{
-            $this->id = $id;
+			$this->id = $id;
 			$this->name = $name;
-
 		}
 
 		function getId()
