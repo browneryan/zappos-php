@@ -24,8 +24,10 @@
 			//Arrange
 			$name = "Vivobarefoot";
 			$test_brand = new Brand($id = null, $name);
+
 			//Act
 			$result = $test_brand->getName();
+
 			//Assert
 			$this->assertEquals($name, $result);
 		}
@@ -35,8 +37,10 @@
             $id = 1;
 			$name = "Vivobarefoot";
 			$test_brand = new Brand($id, $name);
+
 			//Act
 			$result = $test_brand->getId();
+
 			//Assert
 			$this->assertEquals(1, $result);
 		}
@@ -47,8 +51,10 @@
 			$id = 1;
             $name = "Vivobarefoot";
 			$test_brand = new Brand($id, $name);
+
             //Act
             $test_brand->save();
+
             //Assert
 			$result = Brand::getAll();
             $this->assertEquals($test_brand, $result[0]);
@@ -74,7 +80,6 @@
 
 		function testDeleteAll()
 		{
-			//Arrange
             //Arrange
             $name = "Vivobarefoot";
 			$test_brand = new Brand($id = null, $name);
@@ -164,7 +169,6 @@
 			$store_name2 = "The Shoe Store PDX";
             $test_store2 = new Store($id2 = null, $store_name2);
 			$test_store2->save();
-
 
             //Act
             $test_brand->addStore($test_store);
