@@ -1,5 +1,5 @@
 # Shoe Store Database
-#####A web application that lists local shoe stores and the brands they carry.
+##### A web application that lists local shoe stores and the brands they carry.
 
 #### By Ryan Brown
 
