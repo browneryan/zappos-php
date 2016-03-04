@@ -197,48 +197,5 @@
 			$this->assertEquals([], $test_store->getBrands());
 		}
 
-		// function testAddCopy()
-		// {
-		// 	//Arrange
-		// 	$name = "Gardners Art Through the Ages";
-		// 	$id = 7;
-		// 	$test_brand = new Brand($name, $id);
-		// 	$test_brand->save();
-		// 	$id = 1;
-		// 	$brand_id = $test_brand->getId();
-		// 	$checkout = 0;
-		// 	$due_date = "2016-03-02";
-		// 	$test_copy = new Copy($id, $brand_id, $checkout, $due_date);
-		// 	$test_copy->save();
-		// 	//Act
-		// 	$test_brand->addCopy($test_copy);
-		// 	//Assert
-		// 	$this->assertEquals([$test_copy], $test_brand->getCopies());
-		// }
-		// function testGetCopies()
-		// {
-		// 	//Arrange
-		// 	$name = "Gardners Art Through the Ages";
-		// 	$id = 7;
-		// 	$test_brand = new Brand($name, $id);
-		// 	$test_brand->save();
-		// 	$id = 1;
-		// 	$brand_id = $test_brand->getId();
-		// 	$checkout = 0;
-		// 	$due_date = "2016-03-02";
-		// 	$test_copy = new Copy($id, $brand_id, $checkout, $due_date);
-		// 	$test_copy->save();
-		// 	$id2 = 2;
-		// 	$brand_id = $test_brand->getId();
-		// 	$checkout2 = 0;
-		// 	$due_date2 = "2016-03-01";
-		// 	$test_copy2 = new Copy($id2, $brand_id, $checkout2, $due_date2);
-		// 	$test_copy2->save();
-		// 	//Act
-		// 	$test_brand->addCopy($test_copy);
-		// 	$test_brand->addCopy($test_copy2);
-		// 	//Assert
-		// 	$this->assertEquals([$test_copy, $test_copy2], $test_brand->getCopies());
-		// }
 	}
 ?>

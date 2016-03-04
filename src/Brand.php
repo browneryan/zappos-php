@@ -98,24 +98,5 @@
 			$GLOBALS['DB']->exec("DELETE FROM stores_brands WHERE brand_id = {$this->getId()};");
 		}
 
-		// function addCopy($brand)
-		// {
-		// 	$GLOBALS['DB']->exec("INSERT INTO copies (brand_id) VALUES ({$brand->getId()});");
-		// }
-		// function getCopies()
-		// {
-		// 	$query = $GLOBALS['DB']->query("SELECT * FROM copies WHERE brand_id = {$this->getId()};");
-		// 	$copies = $query->fetchAll(PDO::FETCH_ASSOC);
-		// 	$copy_results = array();
-		// 	foreach($copies as $copy) {
-		// 		$id = $copy['id'];
-		// 		$brand_id = $copy['brand_id'];
-		// 		$checkout = $copy['checkout'];
-		// 		$due_date = $copy['due_date'];
-		// 		$new_copy = new Copy($id, $brand_id, $checkout, $due_date);
-		// 		array_push($copy_results, $new_copy);
-		// 	}
-		// 	return $copy_results;
-		// }
 	}
  ?>
