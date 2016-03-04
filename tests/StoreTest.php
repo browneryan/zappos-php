@@ -158,5 +158,24 @@
             $this->assertEquals($test_store, $result);
         }
 
+		function testDeleteStore()
+		{
+			//Arrange
+			$name = "Vivobarefoot";
+			$test_brand = new Brand($id = null, $name);
+            $test_brand->save();
+
+			$store_name = "Pie Footwear";
+            $test_store = new Store($id = null, $store_name);
+            $test_store->save();
+
+			//Act
+			$test_store->addBrand($test_brand);
+			$test_store->deleteStore();
+
+			//Assert
+			$this->assertEquals([], $test_brand->getStores());
+		}
+
 	}
 ?>

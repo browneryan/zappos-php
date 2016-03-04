@@ -79,5 +79,12 @@
 			}
 			return $found_store;
 		}
+
+		function deleteStore()
+		{
+			$GLOBALS['DB']->exec("DELETE FROM shoe_stores WHERE id = {$this->getId()};");
+			$GLOBALS['DB']->exec("DELETE FROM stores_brands WHERE store_id = {$this->getId()};");
+		}
+
 	}
  ?>
