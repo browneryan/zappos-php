@@ -56,18 +56,19 @@
 			}
 			return $found_brand;
 		}
+
+		static function findByName($search_name)
+		{
+			$found_brand = null;
+			$brands = Brand::getAll();
+			foreach($brands as $brand) {
+				if($search_name == $brand->getName()) {
+					$found_brand = $brand;
+				}
+			}
+			return $found_brand;
+		}
         
-		// static function findByName($search_name)
-		// {
-		// 	$found_brand = null;
-		// 	$brands = Brand::getAll();
-		// 	foreach($brands as $brand) {
-		// 		if($search_name == $brand->getName()) {
-		// 			$found_brand = $brand;
-		// 		}
-		// 	}
-		// 	return $found_brand;
-		// }
 		// function addAuthor($author)
 		// {
 		// 	$GLOBALS['DB']->exec("INSERT INTO brands_authors (brand_id, author_id) VALUES ({$this->getId()}, {$author->getId()});");

@@ -62,7 +62,7 @@
             $test_brand->save();
 
             $name2 = "Toms";
-			$test_brand2 = new Brand($id = null, $name);
+			$test_brand2 = new Brand($id2 = null, $name2);
             $test_brand2->save();
 
 			//Act
@@ -81,7 +81,7 @@
             $test_brand->save();
 
             $name2 = "Toms";
-			$test_brand2 = new Brand($id = null, $name);
+			$test_brand2 = new Brand($id2 = null, $name2);
             $test_brand2->save();
 
 			//Act
@@ -100,30 +100,34 @@
             $test_brand->save();
 
             $name2 = "Toms";
-			$test_brand2 = new Brand($id = null, $name);
+			$test_brand2 = new Brand($id2 = null, $name2);
             $test_brand2->save();
+
             //Act
             $result = Brand::find($test_brand->getId());
+
             //Assert
             $this->assertEquals($test_brand, $result);
         }
 
-		// function testFindByName()
-        // {
-        //     //Arrange
-		// 	$name = "Slaughterhouse Five";
-		// 	$id = 1;
-		// 	$test_brand = new Brand($name, $id);
-        //     $test_brand->save();
-		// 	$name2 = "A Visit from the Goon Squad";
-		// 	$id2 = 2;
-		// 	$test_brand2 = new Brand($name2, $id2);
-		// 	$test_brand2->save();
-        //     //Act
-        //     $result = Brand::findByName($test_brand->getName());
-        //     //Assert
-        //     $this->assertEquals($test_brand, $result);
-        // }
+		function testFindByName()
+        {
+            //Arrange
+            $name = "Vivobarefoot";
+			$test_brand = new Brand($id = null, $name);
+            $test_brand->save();
+
+            $name2 = "Toms";
+			$test_brand2 = new Brand($id2 = null, $name2);
+            $test_brand2->save();
+
+            //Act
+            $result = Brand::findByName($test_brand->getName());
+
+            //Assert
+            $this->assertEquals($test_brand, $result);
+        }
+
 		// function testAddAuthor()
 		// {
 		// 	//Arrange
