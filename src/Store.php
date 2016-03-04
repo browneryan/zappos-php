@@ -7,24 +7,23 @@
 
 		function __construct($id, $name)
 		{
-            $this->id = $id;
-            $this->name = $name;
+			$this->id = $id;
+			$this->name = $name;
 		}
 
-        function getId()
-        {
-            return $this->id;
-        }
+		function getId()
+		{
+			return $this->id;
+		}
 
 		function getName()
-        {
-            return $this->name;
-        }
+		{
+			return $this->name;
+		}
 
 		function save()
 		{
-			$GLOBALS['DB']->exec("INSERT INTO shoe_stores (name) VALUES ('{$this->getName()}');");
-			$this->id = $GLOBALS['DB']->lastInsertId();
+			$GLOBALS['DB']->exec("INSERT INTO shoe_stores (name) VALUES ('{$this->getName()}');"); $this->id = $GLOBALS['DB']->lastInsertId();
 		}
 
 		static function getAll()
@@ -58,14 +57,7 @@
 				WHERE shoe_stores.id = {$this->getId()};");
 			$brand_ids = $query->fetchAll(PDO::FETCH_ASSOC);
 
-			$brands = array();
-			foreach($brand_ids as $brand) {
-				$id = $brand['id'];
-				$name = $brand['name'];
-				$new_brand = new Brand($id, $name);
-				array_push($brands, $new_brand);
-			}
-			return $brands;
+			$brands = array();foreach($brand_ids as $brand) {$id = $brand['id'];$name = $brand['name'];$new_brand = new Brand($id, $name);array_push($brands, $new_brand);}return $brands;
 		}
 
 		static function findByStore($search_name)
@@ -74,11 +66,10 @@
 			$stores = Store::getAll();
 			foreach($stores as $store) {
 				if ($search_name == $store->getName()) {
-					$found_store = $store;
+					$found_store = $store;}
 				}
+				return $found_store;
 			}
-			return $found_store;
-		}
 
 		function deleteStore()
 		{
