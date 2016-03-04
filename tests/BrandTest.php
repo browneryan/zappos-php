@@ -13,11 +13,11 @@
 
 	class BrandTest extends PHPUnit_Framework_TestCase
 	{
-		// protected function tearDown()
-        // {
-        //   Brand::deleteAll();
+		protected function tearDown()
+        {
+          Brand::deleteAll();
 		//   Store::deleteAll();
-        // }
+        }
 
 		function testGetName()
 		{
@@ -32,42 +32,46 @@
 		function testGetId()
 		{
 			//Arrange
+            $id = 1;
 			$name = "Vivobarefoot";
-			$id = 1;
 			$test_brand = new Brand($id, $name);
 			//Act
 			$result = $test_brand->getId();
 			//Assert
 			$this->assertEquals(1, $result);
 		}
-		// function testSave()
-        // {
-        //     //Arrange
-		// 	$name = "Slaughterhouse Five";
-		// 	$id = 1;
-		// 	$test_brand = new Brand($name, $id);
-        //     //Act
-        //     $test_brand->save();
-        //     //Assert
-		// 	$result = Brand::getAll();
-        //     $this->assertEquals($test_brand, $result[0]);
-        // }
-		// function testGetAll()
-		// {
-		// 	//Arrange
-		// 	$name = "Slaughterhouse Five";
-		// 	$id = 1;
-		// 	$test_brand = new Brand($name, $id);
-        //     $test_brand->save();
-		// 	$name2 = "A Visit from the Goon Squad";
-		// 	$id2 = 2;
-		// 	$test_brand2 = new Brand($name2, $id2);
-		// 	$test_brand2->save();
-		// 	//Act
-		// 	$result = Brand::getAll();
-		// 	//Assert
-		// 	$this->assertEquals([$test_brand, $test_brand2], $result);
-		// }
+
+		function testSave()
+        {
+            //Arrange
+			$id = 1;
+            $name = "Vivobarefoot";
+			$test_brand = new Brand($id, $name);
+            //Act
+            $test_brand->save();
+            //Assert
+			$result = Brand::getAll();
+            $this->assertEquals($test_brand, $result[0]);
+        }
+
+		function testGetAll()
+		{
+			//Arrange
+            $name = "Vivobarefoot";
+			$test_brand = new Brand($id = null, $name);
+            $test_brand->save();
+
+            $name2 = "Vivobarefoot";
+			$test_brand2 = new Brand($id = null, $name);
+            $test_brand2->save();
+
+			//Act
+			$result = Brand::getAll();
+
+			//Assert
+			$this->assertEquals([$test_brand, $test_brand2], $result);
+		}
+
 		// function testDeleteAll()
 		// {
 		// 	//Arrange
