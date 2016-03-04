@@ -13,9 +13,21 @@ Lists local shoe stores and the brands of shoes they carry in a database, which 
 2. Change directory into the top level of the project folder.
 3. Install Composer (https://getcomposer.org) and then run the command `composer install` to download the Silex and Twig vendor files.
 4. Change directory into the `web` folder and run the command `php -S localhost:8000` start your server.
-4. Navigate your browser to the home page at the root address  `http://localhost:8000`.
+5. Navigate your browser to the home page at the root address  `http://localhost:8000`.
+6. Open `localhost:8888/phpmyadmin` in your browser. Enter the user name `root` and the password `root`.
+7. Choose the `Import` tab, select the database file named `zappos-php.sql` (from the project folder) and click `Go`. You should now be able to see the `shoes` database in your phpMyAdmin.
 
+## MySQL Commands Used
 
+1. `CREATE DATABASE shoes;`
+
+2. `USE shoes;`
+
+3. `CREATE TABLE brands(id serial PRIMARY KEY, name VARCHAR(255));`
+
+4. `CREATE TABLE shoe_stores(id serial PRIMARY KEY, name VARCHAR(255));`
+
+5. `CREATE TALE stores_brands(id serial PRIMARY KEY, store_id INT, brand_id INT);`
 
 ## Technologies Used
 
