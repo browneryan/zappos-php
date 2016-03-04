@@ -16,6 +16,11 @@
 			return $this->id;
 		}
 
+		function setName($new_store_name)
+		{
+			$this->name = $new_store_name;
+		}
+
 		function getName()
 		{
 			return $this->name;
@@ -83,6 +88,12 @@
 		{
 			$GLOBALS['DB']->exec("DELETE FROM shoe_stores WHERE id = {$this->getId()};");
 			$GLOBALS['DB']->exec("DELETE FROM stores_brands WHERE store_id = {$this->getId()};");
+		}
+
+		function update($new_store_name)
+		{
+			$GLOBALS['DB']->exec("UPDATE shoe_stores SET name = '{$new_store_name}' WHERE id = {$this->getId()};");
+			$this->setName($new_store_name);
 		}
 
 	}

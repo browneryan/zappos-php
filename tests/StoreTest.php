@@ -176,6 +176,25 @@
 			//Assert
 			$this->assertEquals([], $test_brand->getStores());
 		}
-		
+
+		function test_update()
+		{
+			//Arrange
+			$name = "Vivobarefoot";
+			$test_brand = new Brand($id = null, $name);
+			$test_brand->save();
+
+			$store_name = "Pie Footwear";
+			$test_store = new Store($id = null, $store_name);
+			$test_store->save();
+
+			$new_name = "The Shoe Store PDX";
+
+			//Act
+			$test_store->update($new_name);
+
+			//Arrange
+			$this->assertEquals("The Shoe Store PDX", $test_store->getName());
+		}
 	}
 ?>
