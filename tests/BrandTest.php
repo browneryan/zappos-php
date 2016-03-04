@@ -15,9 +15,9 @@
 	{
 		protected function tearDown()
         {
-          Brand::deleteAll();
-		  Store::deleteAll();
-        }
+			Brand::deleteAll();
+			Store::deleteAll();
+		}
 
 		function testGetName()
 		{
@@ -35,7 +35,7 @@
 		function testGetId()
 		{
 			//Arrange
-            $id = 1;
+			$id = 1;
 			$name = "Vivobarefoot";
 			$test_brand = new Brand($id, $name);
 
@@ -47,30 +47,30 @@
 		}
 
 		function testSave()
-        {
-            //Arrange
+		{
+			//Arrange
 			$id = 1;
-            $name = "Vivobarefoot";
+			$name = "Vivobarefoot";
 			$test_brand = new Brand($id, $name);
 
-            //Act
-            $test_brand->save();
+			//Act
+			$test_brand->save();
 
-            //Assert
+			//Assert
 			$result = Brand::getAll();
-            $this->assertEquals($test_brand, $result[0]);
-        }
+			$this->assertEquals($test_brand, $result[0]);
+		}
 
 		function testGetAll()
 		{
 			//Arrange
-            $name = "Vivobarefoot";
+			$name = "Vivobarefoot";
 			$test_brand = new Brand($id = null, $name);
-            $test_brand->save();
+			$test_brand->save();
 
-            $name2 = "Toms";
+			$name2 = "Toms";
 			$test_brand2 = new Brand($id2 = null, $name2);
-            $test_brand2->save();
+			$test_brand2->save();
 
 			//Act
 			$result = Brand::getAll();
@@ -81,14 +81,14 @@
 
 		function testDeleteAll()
 		{
-            //Arrange
-            $name = "Vivobarefoot";
+			//Arrange
+			$name = "Vivobarefoot";
 			$test_brand = new Brand($id = null, $name);
-            $test_brand->save();
+			$test_brand->save();
 
-            $name2 = "Toms";
+			$name2 = "Toms";
 			$test_brand2 = new Brand($id2 = null, $name2);
-            $test_brand2->save();
+			$test_brand2->save();
 
 			//Act
 			Brand::deleteAll();
@@ -99,96 +99,96 @@
 		}
 
 		function testFind()
-        {
-            //Arrange
-            $name = "Vivobarefoot";
+		{
+			//Arrange
+			$name = "Vivobarefoot";
 			$test_brand = new Brand($id = null, $name);
-            $test_brand->save();
+			$test_brand->save();
 
-            $name2 = "Toms";
+			$name2 = "Toms";
 			$test_brand2 = new Brand($id2 = null, $name2);
-            $test_brand2->save();
+			$test_brand2->save();
 
-            //Act
-            $result = Brand::find($test_brand->getId());
+			//Act
+			$result = Brand::find($test_brand->getId());
 
-            //Assert
-            $this->assertEquals($test_brand, $result);
-        }
+			//Assert
+			$this->assertEquals($test_brand, $result);
+		}
 
 		function testFindByName()
-        {
-            //Arrange
-            $name = "Vivobarefoot";
+		{
+			//Arrange
+			$name = "Vivobarefoot";
 			$test_brand = new Brand($id = null, $name);
-            $test_brand->save();
+			$test_brand->save();
 
-            $name2 = "Toms";
+			$name2 = "Toms";
 			$test_brand2 = new Brand($id2 = null, $name2);
-            $test_brand2->save();
+			$test_brand2->save();
 
-            //Act
-            $result = Brand::findByName($test_brand->getName());
+			//Act
+			$result = Brand::findByName($test_brand->getName());
 
-            //Assert
-            $this->assertEquals($test_brand, $result);
-        }
+			//Assert
+			$this->assertEquals($test_brand, $result);
+		}
 
 		function testAddStore()
 		{
 			//Arrange
 			$store_name = "Pie Footwear";
-            $test_store = new Store($id = null, $store_name);
-            $test_store->save();
+			$test_store = new Store($id = null, $store_name);
+			$test_store->save();
 
-            $name = "Vivobarefoot";
+			$name = "Vivobarefoot";
 			$test_brand = new Brand($id = null, $name);
-            $test_brand->save();
+			$test_brand->save();
 
-            $name2 = "Toms";
+			$name2 = "Toms";
 			$test_brand2 = new Brand($id2 = null, $name2);
-            $test_brand2->save();
+			$test_brand2->save();
 
 			//Act
 			$test_brand->addStore($test_store);
-			//Assert
 
+			//Assert
 			$this->assertEquals([$test_store], $test_brand->getStores());
 		}
 
 		function testGetStores()
-        {
-            //Arrange
-            $name = "Vivobarefoot";
+		{
+			//Arrange
+			$name = "Vivobarefoot";
 			$test_brand = new Brand($id = null, $name);
-            $test_brand->save();
+			$test_brand->save();
 
 			$store_name = "Pie Footwear";
-            $test_store = new Store($id = null, $store_name);
-            $test_store->save();
+			$test_store = new Store($id = null, $store_name);
+			$test_store->save();
 
 			$store_name2 = "The Shoe Store PDX";
-            $test_store2 = new Store($id2 = null, $store_name2);
+			$test_store2 = new Store($id2 = null, $store_name2);
 			$test_store2->save();
 
-            //Act
-            $test_brand->addStore($test_store);
-            $test_brand->addStore($test_store2);
+			//Act
+			$test_brand->addStore($test_store);
+			$test_brand->addStore($test_store2);
 
-            //Assert
-            $this->assertEquals([$test_store, $test_store2], $test_brand->getStores());
-        }
+			//Assert
+			$this->assertEquals([$test_store, $test_store2], $test_brand->getStores());
+		}
 
 		function testDeleteBrand()
 		{
 			//Arrange
 			$name = "Vivobarefoot";
 			$test_brand = new Brand($id = null, $name);
-            $test_brand->save();
+			$test_brand->save();
 
 			$store_name = "Pie Footwear";
-            $test_store = new Store($id = null, $store_name);
-            $test_store->save();
+			$test_store = new Store($id = null, $store_name);
+			$test_store->save();
 
 			//Act
 			$test_brand->addStore($test_store);
@@ -197,6 +197,6 @@
 			//Assert
 			$this->assertEquals([], $test_store->getBrands());
 		}
-
+		
 	}
 ?>
