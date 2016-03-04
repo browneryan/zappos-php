@@ -61,5 +61,13 @@
 	  ));
 	});
 
+	$app->patch("/store/{id}/edit", function($id) use ($app) {
+        $store = Store::find($id);
+        $store->update($_POST['name']);
+        return $app['twig']->render('store.html.twig', array('shoe_stores' => $store, 'brands' => $store->getBrands()
+	  ));
+    });
+
+
 	return $app;
 ?>
