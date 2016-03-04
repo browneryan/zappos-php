@@ -32,7 +32,15 @@
                 <button type="submit" class="waves-effect waves-light btn-large" name="button">Submit</button>
               </form>
               <br>
-              <form action="/store/{{ shoe_store.getId }}/delete" method="post">
+              <form action="/store/{{ shoe_stores.getId }}/edit" method="post">
+                <input name="_method" type="hidden" value="patch">
+                  <label for="name">Rename this store:</label>
+                  <input id="name" name="name" type="text" required>
+                  <br>
+                  <button type="submit" class="waves-effect waves-light btn-large" name="button">Edit</button>
+              </form>
+              <br>
+              <form action="/store/{{ shoe_stores.getId }}/delete" method="post">
                 <input name="_method" type="hidden" value="delete">
                 <button type="submit" class="waves-effect waves-light btn-large" name="button">Delete</button>
               </form>
