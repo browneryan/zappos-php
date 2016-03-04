@@ -68,16 +68,16 @@
 			return $brands;
 		}
 
-		// static function findByStore($search_name)
-		// {
-		// 	$found_author = null;
-		// 	$authors = Store::getAll();
-		// 	foreach($authors as $author) {
-		// 		if ($search_name == $author->getName()) {
-		// 			$found_author = $author;
-		// 		}
-		// 	}
-		// 	return $found_author;
-		// }
+		static function findByStore($search_name)
+		{
+			$found_store = null;
+			$stores = Store::getAll();
+			foreach($stores as $store) {
+				if ($search_name == $store->getName()) {
+					$found_store = $store;
+				}
+			}
+			return $found_store;
+		}
 	}
  ?>

@@ -140,22 +140,23 @@
             $this->assertEquals([$test_brand, $test_brand2], $test_store->getBrands());
         }
 
-		// function testFindByStore()
-        // {
-        //     //Arrange
-		// 	$name = "Gabriel Garcia Marquez";
-        //     $id = 1;
-        //     $test_store = new Store($name, $id);
-		// 	$test_store->save();
-		// 	$title = "The General in his Labyrinth";
-		// 	$id = 1;
-		// 	$test_brand = new Brand($title, $id);
-        //     $test_brand->save();
-        //     //Act
-        //     $result = Store::findByStore($test_store->getName());
-        //     //Assert
-        //     $this->assertEquals($test_store, $result);
-        // }
+		function testFindByStore()
+        {
+            //Arrange
+			$store_name = "Pie Footwear";
+            $test_store = new Store($id = null, $store_name);
+			$test_store->save();
+
+			$name = "Vivobarefoot";
+			$test_brand = new Brand($id = null, $name);
+            $test_brand->save();
+
+            //Act
+            $result = Store::findByStore($test_store->getName());
+
+            //Assert
+            $this->assertEquals($test_store, $result);
+        }
 
 	}
 ?>
