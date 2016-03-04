@@ -27,7 +27,7 @@ Lists local shoe stores and the brands of shoes they carry in a database, which 
 
 4. `CREATE TABLE shoe_stores(id serial PRIMARY KEY, name VARCHAR(255));`
 
-5. `CREATE TALE stores_brands(id serial PRIMARY KEY, store_id INT, brand_id INT);`
+5. `CREATE TABLE stores_brands(id serial PRIMARY KEY, store_id INT, brand_id INT);`
 
 ## Technologies Used
 
