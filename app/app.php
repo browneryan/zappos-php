@@ -24,7 +24,7 @@
 		return $app['twig']->render('index.html.twig');
 	});
 
-	// Gets shoe_store homepage with list of shoe shoe_stores
+	// Gets shoe_store page with list of all shoe_stores
 	$app->get('/shoe_stores', function() use ($app) {
 		return $app['twig']->render('shoe_stores.html.twig', array('shoe_stores' => Store::getAll()
 	  ));
@@ -72,6 +72,27 @@
 		$store = Store::find($id);
 		$store->deleteStore();
 		return $app['twig']->render('shoe_stores.html.twig', array('shoe_stores' => Store::getAll()
+	  ));
+	});
+
+	// Gets brands page with list of all brands
+	$app->get('/brands', function() use ($app) {
+		return $app['twig']->render('brands.html.twig', array('brands' => Brand::getAll()
+	  ));
+	});
+
+	// Delete all stores
+	$app->post('/delete_all_brands', function() use ($app) {
+		Brand::deleteAll();
+		return $app['twig']->render('brands.html.twig', array('brands' => Brand::getAll()
+	  ));
+	});
+
+	// Add store to shoe_stores page
+	$app->post("/add_brand", function() use ($app) {
+		$new_brand = new Brand($id = null, $_POST['name']);
+		$new_brand->save();
+		return $app['twig']->render('brands.html.twig', array('brands' => Brand::getAll()
 	  ));
 	});
 
