@@ -96,5 +96,21 @@
 	  ));
 	});
 
+	// Get specific store page with brands listed
+	$app->get('/brand/{id}', function($id) use ($app) {
+		$brand = Brand::find($id);
+		return $app['twig']->render('brand_info.html.twig', array('brands' => $brand, 'shoe_stores' => $brand->getStores()
+	  ));
+	});
+
+	$app->post('/brand/{id}/add_store', function($id) use ($app) {
+		$brand = Brand::find($id);
+		$new_store = new Store($id = null, $_POST['name']);
+		$new_store->save();
+		$brand->addStore($new_store);
+		return $app['twig']->render('brand_info.html.twig', array('brands' => $brand, 'shoe_stores' => $brand->getStores()
+	  ));
+	});
+
 	return $app;
 ?>
