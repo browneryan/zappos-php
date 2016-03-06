@@ -15,7 +15,8 @@ Lists local shoe stores and the brands of shoes they carry in a database, which 
 4. Change directory into the `web` folder and run the command `php -S localhost:8000` start your server.
 5. Navigate your browser to the home page at the root address  `http://localhost:8000`.
 6. Open `localhost:8888/phpmyadmin` in your browser. Enter the user name `root` and the password `root`.
-7. Choose the `Import` tab, select the database file named `zappos-php.sql` (from the project folder) and click `Go`. You should now be able to see the `shoes` database in your phpMyAdmin.
+7. Choose the `Import` tab, select the database file named `shoes.sql.zip` (from the project folder) and click `Go`. You should now be able to see the `shoes` database in your phpMyAdmin.
+8. Repeat step 7 with the file named `shoes_test.sql.zip` in order to run tests.
 
 ## MySQL Commands Used
 
