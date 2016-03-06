@@ -10,7 +10,7 @@
 	$app->register(new Silex\Provider\TwigServiceProvider(), array('twig.path' => __DIR__.'/../views'));
 
 	// Setup server for database
-	$server = 'mysql:host=localhost;dbname=shoes';
+	$server = 'mysql:host=localhost:8889;dbname=shoes';
 	$username = 'root';
 	$password = 'root';
 	$DB = new PDO($server, $username, $password);
