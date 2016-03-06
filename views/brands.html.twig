@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-    <link rel="stylesheet" href="/css/styles.css" media="all">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-    <meta charset="utf-8">
+    {% include '/includes/head.html.twig' %}
     <title>Zappos</title>
   </head>
   <body>
@@ -30,18 +26,12 @@
               </br>
               <button type="submit" class="waves-effect waves-light btn-large" name="button">Submit</button>
             </form>
-              <!-- <form action="/add_store" method="post">
-                <label for="name">Store name:</label>
-                <input type="text" name="name" id="name">
-                </br>
-                <button type="submit" class="waves-effect waves-light btn-large" name="button">Submit</button>
-              </form> -->
-              <br>
-              <form action="/delete_all_brands" method="post" class='form-group'>
-                <button type="submit" class="waves-effect waves-light btn-large" name="button">Delete all</button>
-              </form>
-              <br>
-              <a href="/" type="submit" class="waves-effect waves-light btn-large" name="button">Home</a>
+            <br>
+            <form action="/delete_all_brands" method="post" class='form-group'>
+              <button type="submit" class="waves-effect waves-light btn-large" name="button">Delete all</button>
+            </form>
+            <br>
+            <a href="/" type="submit" class="waves-effect waves-light btn-large" name="button">Home</a>
           </div>
         </div>
       </div>

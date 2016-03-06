@@ -1,12 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+    {% include '/includes/head.html.twig' %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/styles.css" media="all">
     <title>Zappos</title>
   </head>
   <body>
@@ -25,7 +21,7 @@
         {% endif %}
         <div class="add-features">
           <div class="row">
-            <div class="col s12">
+            <div class="input-field col s12 form-group">
               <h5>Add brand:</h5>
               <form action="/store/{{ shoe_stores.getId }}/add_brand" method="post">
                 <input type="hidden" name="name" value="{{ shoe_stores.getId }}">
