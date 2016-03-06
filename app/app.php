@@ -30,7 +30,7 @@
 	  ));
 	});
 
-	// Add store to shoe_stores page
+	// Post store to shoe_stores page
 	$app->post("/add_store", function() use ($app) {
 		$new_store = new Store($id = null, $_POST['name']);
 		$new_store->save();
@@ -41,16 +41,16 @@
 	// Get specific store page with brands listed
 	$app->get('/store/{id}', function($id) use ($app) {
 		$store = Store::find($id);
-		return $app['twig']->render('store.html.twig', array('shoe_stores' => $store, 'brands' => $store->getBrands()
+		return $app['twig']->render('store.html.twig', array('shoe_stores' => $store, 'store_brands' => $store->getBrands(), 'brands' => Brand::getAll()
 	  ));
 	});
 
+	// Post a brand to a store
 	$app->post('/store/{id}/add_brand', function($id) use ($app) {
 		$store = Store::find($id);
-		$new_brand = new Brand($id = null, $_POST['name']);
-		$new_brand->save();
-		$store->addBrand($new_brand);
-		return $app['twig']->render('store.html.twig', array('shoe_stores' => $store, 'brands' => $store->getBrands()
+		$brand = Brand::find($_POST['brand_id']);
+		$store->addBrand($brand);
+		return $app['twig']->render('store.html.twig', array('shoe_stores' => $store, 'store_brands' => $store->getBrands(), 'brands' => Brand::getAll()
 	  ));
 	});
 
@@ -61,6 +61,7 @@
 	  ));
 	});
 
+	// Edit a store name
 	$app->patch("/store/{id}/edit", function($id) use ($app) {
 		$store = Store::find($id);
 		$store->update($_POST['name']);
@@ -68,6 +69,7 @@
 	  ));
 	});
 
+	// Deletes single store
 	$app->delete("/store/{id}/delete", function($id) use ($app) {
 		$store = Store::find($id);
 		$store->deleteStore();
@@ -88,7 +90,7 @@
 	  ));
 	});
 
-	// Add store to shoe_stores page
+	// Post store to shoe_stores page
 	$app->post("/add_brand", function() use ($app) {
 		$new_brand = new Brand($id = null, $_POST['name']);
 		$new_brand->save();
@@ -103,6 +105,7 @@
 	  ));
 	});
 
+	// Post a store to a brand
 	$app->post('/brand/{id}/add_store', function($id) use ($app) {
 		$brand = Brand::find($id);
 		$new_store = new Store($id = null, $_POST['name']);
