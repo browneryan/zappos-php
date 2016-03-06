@@ -6,7 +6,7 @@
 	require_once "src/Brand.php";
 	require_once "src/Store.php";
 
-	$server = 'mysql:host=localhost;dbname=shoes_test';
+	$server = 'mysql:host=localhost:8889;dbname=shoes_test';
 	$user = 'root';
 	$password = 'root';
 	$DB = new PDO($server, $user, $password);
