@@ -65,7 +65,7 @@
 	$app->patch("/store/{id}/edit", function($id) use ($app) {
 		$store = Store::find($id);
 		$store->update($_POST['name']);
-		return $app['twig']->render('store.html.twig', array('shoe_stores' => $store, 'brands' => $store->getBrands()
+		return $app['twig']->render('store.html.twig', array('shoe_stores' => $store, 'store_brands' => $store->getBrands(), 'brands' => Brand::getAll()
 	  ));
 	});
 
@@ -101,17 +101,16 @@
 	// Get specific store page with brands listed
 	$app->get('/brand/{id}', function($id) use ($app) {
 		$brand = Brand::find($id);
-		return $app['twig']->render('brand_info.html.twig', array('brands' => $brand, 'shoe_stores' => $brand->getStores()
+		return $app['twig']->render('brand_info.html.twig', array('brands' => $brand, 'shoe_stores' => $brand->getStores(), 'brand_stores' => Store::getAll()
 	  ));
 	});
 
 	// Post a store to a brand
 	$app->post('/brand/{id}/add_store', function($id) use ($app) {
 		$brand = Brand::find($id);
-		$new_store = new Store($id = null, $_POST['name']);
-		$new_store->save();
-		$brand->addStore($new_store);
-		return $app['twig']->render('brand_info.html.twig', array('brands' => $brand, 'shoe_stores' => $brand->getStores()
+		$store = Store::find($_POST['id']);
+		$brand->addStore($store);
+		return $app['twig']->render('brand_info.html.twig', array('brands' => $brand, 'shoe_stores' => $brand->getStores(), 'brand_stores' => Store::getAll()
 	  ));
 	});
 
